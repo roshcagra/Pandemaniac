@@ -10,6 +10,6 @@ filename = sys.argv[1]
 n = int(sys.argv[2])
 
 G = read_graph(filename)
-adjacency_list_to_incidence_matrix(G)
+i_matrix = adjacency_list_to_incidence_matrix(G)
 
-# spec = spectral_clustering(G)
+clusters = spectral_clustering(i_matrix)
