@@ -1,3 +1,5 @@
+import operator
+
 def highest_degree(G, n):
     G_degrees = dict(map(lambda (k, v): (k, len(v)), G.iteritems()))
 
