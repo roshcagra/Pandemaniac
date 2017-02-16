@@ -19,12 +19,12 @@ i_matrix = adjacency_list_to_incidence_matrix(G)
 clusters = spectral_clustering(i_matrix)
 
 for i in range(8):
-    curr_cluster = np.where(clusters==i)
+    curr_cluster = np.where(clusters==i)[0]
     best_node = -1
     best_degree = -1
-    for node in np.nditer(curr_cluster):
-        node_degree = G_degrees[str(node)]
+    for node in curr_cluster:
+        node_degree = G_degrees[node]
         if node_degree > best_degree:
             best_node = node
             best_degree = node_degree
-    print "Cluster", i, best_node
+    print "Cluster", i, best_node, len(curr_cluster)
