@@ -1,5 +1,8 @@
 import json
+import networkx as nx
 import numpy as np
+
+from nx_strategies import *
 
 def read_graph(filename):
     with open (filename, "r") as myfile:
@@ -20,3 +23,16 @@ def write_nodes(nodes):
         for _ in range(50):
             for node in nodes:
                 myfile.write(node + "\n")
+
+def adjacency_list_to_networkx(adj_list):
+    G = nx.Graph()
+    for node in adj_list:
+        G.add_node(node)
+        G.add_edges_from([(node, target) for target in adj_list[node]])
+    return G
+
+strategies = {
+    "highest_degree": highest_degree,
+    "average_neighbor_degree": average_neighbor_degree,
+    "closeness_centrality": closeness_centrality
+}
