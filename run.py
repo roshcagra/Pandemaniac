@@ -1,21 +1,23 @@
 import sim
 import sys
 import utils
-from anti_highest_degree import anti_highest_degree
-from nx_strategies import *
 
-filename = sys.argv[1]
-n = len(sys.argv) - 2
+if __name__ == "__main__":
+    try:
+        filename = sys.argv[1]
+        n = int(sys.argv[2])
+        m = len(sys.argv) - 3
 
-graph = utils.read_graph(filename)
-# Choose between these strategies by commenting/uncommenting the below lines
-nodes = {
-    #"highest_degree": highest_degree(graph, 10),
-    "anti_highest_degree": anti_highest_degree(graph, 10),
-    #"average_neighbor_degree": average_neighbor_degree(graph, 10),
-    "closeness_centrality": closeness_centrality(graph, 10)
-}
-# for i in range(n):
-#     nodes["strategy" + str(i + 1)] = utils.read_nodes(sys.argv[i + 2])
+        graph = utils.read_graph(filename)
+        nodes = {}
+        for i in range(m):
+            key = sys.argv[i + 3]
+            nodes[key] = utils.strategies[key](graph, n)
+        print(sim.run(graph, nodes))
 
-print sim.run(graph, nodes)
+    except:
+        print("   USAGE:   python run.py [input graph file] [number of seeds] [strategy1] [strategy2] ...")
+        print("   EXAMPLE: python run.py testgraph1.json 10 highest_degree closeness_centrality")
+        print("   AVAILABLE STRATEGIES:")
+        for key in utils.strategies:
+            print("      " + key)
