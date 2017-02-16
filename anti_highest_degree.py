@@ -1,31 +1,24 @@
-from utils import read_graph
-from utils import write_nodes
 import operator
-import sys
 
-filename = sys.argv[1]
-n = int(sys.argv[2])
+def anti_highest_degree(G, n):
+    selected = set()
+    def chooseNode(node):
+        if len(selected) < n and node not in selected:
+            selected.add(node)
 
-selected = set()
-def chooseNode(node):
-    if len(selected) < n and node not in selected:
-        selected.add(node)
+    G_degrees = dict(map(lambda (k, v): (k, len(v)), G.iteritems()))
 
-G = read_graph(filename)
+    G_sorted = sorted(G_degrees.items(), key=operator.itemgetter(1), reverse=True)
 
-G_degrees = dict(map(lambda (k, v): (k, len(v)), G.iteritems()))
+    for (node, _) in G_sorted:
+        if len(selected) == n:
+            break
+        try:
+            chooseNode(G[node][0])
+            chooseNode(G[node][1])
+        except:
+            print "Error Choosing Node"
 
-G_sorted = sorted(G_degrees.items(), key=operator.itemgetter(1), reverse=True)
+    assert(n == len(selected))
 
-for (node, _) in G_sorted:
-    if len(selected) == n:
-        break
-    try:
-        chooseNode(G[node][0])
-        chooseNode(G[node][1])
-    except:
-        print "Error Choosing Node"
-
-assert(n == len(selected))
-
-write_nodes(list(selected))
+    return list(selected)
