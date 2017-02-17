@@ -105,6 +105,7 @@ def init(color_nodes, node_color):
   --------------
   Initializes the node to color mappings.
   """
+  conflict_count = 0
   for (color, nodes) in color_nodes.items():
     for node in nodes:
       if node_color[node] is not None:
@@ -113,7 +114,9 @@ def init(color_nodes, node_color):
         node_color[node] = color
   for (node, color) in node_color.items():
     if color == "__CONFLICT__":
+      conflict_count += 1
       node_color[node] = None
+  print "Conflict Count:", conflict_count
 
 
 def update(adj_list, node_color, node):

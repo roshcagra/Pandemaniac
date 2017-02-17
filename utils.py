@@ -4,6 +4,7 @@ import numpy as np
 
 import nx_strategies
 import clustering_strategies
+import random_strategy
 
 def read_graph(filename):
     with open (filename, "r") as myfile:
@@ -39,4 +40,5 @@ strategies = {
     "communicability_centrality": nx_strategies.communicability_centrality,
     "spectral_clustering": clustering_strategies.spectral_clustering,
     "k_means_clustering": clustering_strategies.k_means_clustering,
+    "random": random_strategy.random_seeds
 }
