@@ -26,3 +26,10 @@ def closeness_centrality(adj_list, n):
     from a node to the rest of the nodes is the smallest
     """
     return strategy_template(adj_list, n, nx.closeness_centrality)
+
+def communicability_centrality(adj_list, n):
+    """
+    Returns n nodes from G that have the where the sum of the all closed walks
+    starting and ending at the node is the smallest
+    """
+    return strategy_template(adj_list, n, nx.communicability_centrality)

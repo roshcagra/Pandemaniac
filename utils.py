@@ -23,7 +23,7 @@ def write_nodes(nodes):
     with open("output.txt", 'w') as myfile:
         for _ in range(50):
             for node in nodes:
-                myfile.write(node + "\n")
+                myfile.write(str(node) + "\n")
 
 def adjacency_list_to_networkx(adj_list):
     G = nx.Graph()
@@ -36,6 +36,7 @@ strategies = {
     "highest_degree": nx_strategies.highest_degree,
     "average_neighbor_degree": nx_strategies.average_neighbor_degree,
     "closeness_centrality": nx_strategies.closeness_centrality,
+    "communicability_centrality": nx_strategies.communicability_centrality,
     "spectral_clustering": clustering_strategies.spectral_clustering,
     "k_means_clustering": clustering_strategies.k_means_clustering,
 }
