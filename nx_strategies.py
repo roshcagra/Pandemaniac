@@ -46,5 +46,4 @@ def eigenvector_centrality_rand(adj_list, n):
     Takes the top 2n results of eigenvector_centrality and randomizes among them
     """
     nodes = strategy_template(adj_list, n * 2, nx.eigenvector_centrality)
-    random.shuffle(nodes)
-    return nodes[:n]
+    return random.sample(nodes, n)

@@ -44,3 +44,25 @@ strategies = {
     "k_means_clustering": clustering_strategies.k_means_clustering,
     "random": random_strategy.random_seeds
 }
+
+# Submission History:
+# 2.5.1       closeness_centrality
+# 4.5.1       closeness_centrality
+# 4.10.1      closeness_centrality
+# 2.10.10     closeness_centrality
+# 2.10.20     closeness_centrality
+# 2.10.30     closeness_centrality
+# 8.10.1      closeness_centrality
+# 8.20.1      closeness_centrality
+# 8.20.2      closeness_centrality
+# 8.35.1      highest_degree
+# 2.5.2       eigenvector_centrality
+# 4.5.2       eigenvector_centrality
+# 4.10.2      eigenvector_centrality
+# 2.10.11     eigenvector_centrality
+# 2.10.21     eigenvector_centrality
+# 2.10.31     eigenvector_centrality
+# 8.10.2      eigenvector_centrality_rand
+# 8.20.3      eigenvector_centrality_rand
+# 8.25.1      eigenvector_centrality_rand
+# 8.35.2      eigenvector_centrality_rand
