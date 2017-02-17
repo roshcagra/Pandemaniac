@@ -38,6 +38,8 @@ strategies = {
     "average_neighbor_degree": nx_strategies.average_neighbor_degree,
     "closeness_centrality": nx_strategies.closeness_centrality,
     "communicability_centrality": nx_strategies.communicability_centrality,
+    "eigenvector_centrality": nx_strategies.eigenvector_centrality,
+    "eigenvector_centrality_rand": nx_strategies.eigenvector_centrality_rand,
     "spectral_clustering": clustering_strategies.spectral_clustering,
     "k_means_clustering": clustering_strategies.k_means_clustering,
     "random": random_strategy.random_seeds
