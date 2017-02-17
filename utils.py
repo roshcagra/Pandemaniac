@@ -22,7 +22,7 @@ def write_nodes(nodes):
     with open("output.txt", 'w') as myfile:
         for _ in range(50):
             for node in nodes:
-                myfile.write(node + "\n")
+                myfile.write(str(node) + "\n")
 
 def adjacency_list_to_networkx(adj_list):
     G = nx.Graph()
@@ -36,5 +36,4 @@ strategies = {
     "average_neighbor_degree": average_neighbor_degree,
     "closeness_centrality": closeness_centrality,
     "communicability_centrality": communicability_centrality,
-    # "test": test
 }
