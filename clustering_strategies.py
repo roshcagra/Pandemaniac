@@ -7,7 +7,7 @@ def strategy_template(adj_list, n, method):
     G_degrees = dict(map(lambda (k, v): (k, len(v)), adj_list.iteritems()))
     i_matrix = utils.adjacency_list_to_incidence_matrix(adj_list)
 
-    clusters = method(i_matrix)
+    clusters = method.fit_predict(i_matrix)
 
     degree_sorted_clusters = []
 
@@ -35,10 +35,10 @@ def spectral_clustering(adj_list, n):
     """
     Returns highest degree nodes from the largest clusters defined by spectral clustering
     """
-    return strategy_template(adj_list, n, cluster.spectral_clustering)
+    return strategy_template(adj_list, n, cluster.SpectralClustering(affinity='precomputed'))
 
 def k_means_clustering(adj_list, n):
     """
     Returns highest degree nodes from the largest cluster defined by k-means clustering
     """
-    return strategy_template(adj_list, n, cluster.k_means)
+    return strategy_template(adj_list, n, cluster.KMeans())
