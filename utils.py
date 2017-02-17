@@ -34,5 +34,7 @@ def adjacency_list_to_networkx(adj_list):
 strategies = {
     "highest_degree": highest_degree,
     "average_neighbor_degree": average_neighbor_degree,
-    "closeness_centrality": closeness_centrality
+    "closeness_centrality": closeness_centrality,
+    "communicability_centrality": communicability_centrality,
+    # "test": test
 }

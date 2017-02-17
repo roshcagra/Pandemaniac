@@ -1,5 +1,6 @@
 import sim
 import sys
+import time
 import utils
 
 if __name__ == "__main__":
@@ -11,8 +12,11 @@ if __name__ == "__main__":
         graph = utils.read_graph(filename)
         nodes = {}
         for i in range(m):
+            start = time.time()
             key = sys.argv[i + 3]
             nodes[key] = utils.strategies[key](graph, n)
+            end = time.time()
+            print('Computed %s in %0.3f s' % (key, end-start))
         print(sim.run(graph, nodes))
 
     except:
