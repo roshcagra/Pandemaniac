@@ -2,7 +2,8 @@ import json
 import networkx as nx
 import numpy as np
 
-from nx_strategies import *
+import nx_strategies
+import clustering_strategies
 
 def read_graph(filename):
     with open (filename, "r") as myfile:
@@ -32,7 +33,9 @@ def adjacency_list_to_networkx(adj_list):
     return G
 
 strategies = {
-    "highest_degree": highest_degree,
-    "average_neighbor_degree": average_neighbor_degree,
-    "closeness_centrality": closeness_centrality
+    "highest_degree": nx_strategies.highest_degree,
+    "average_neighbor_degree": nx_strategies.average_neighbor_degree,
+    "closeness_centrality": nx_strategies.closeness_centrality,
+    "spectral_clustering": clustering_strategies.spectral_clustering,
+    "k_means_clustering": clustering_strategies.k_means_clustering,
 }
