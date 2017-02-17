@@ -1,3 +1,4 @@
+import random
 import operator
 import networkx as nx
 import utils
@@ -33,3 +34,17 @@ def communicability_centrality(adj_list, n):
     starting and ending at the node is the smallest
     """
     return strategy_template(adj_list, n, nx.communicability_centrality)
+
+def eigenvector_centrality(adj_list, n):
+    """
+    Produces the results of communicability_centrality in a fraction of the time
+    """
+    return strategy_template(adj_list, n, nx.eigenvector_centrality)
+
+def eigenvector_centrality_rand(adj_list, n):
+    """
+    Takes the top 2n results of eigenvector_centrality and randomizes among them
+    """
+    nodes = strategy_template(adj_list, n * 2, nx.eigenvector_centrality)
+    random.shuffle(nodes)
+    return nodes[:n]
